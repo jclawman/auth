@@ -29,7 +29,6 @@ Key10=$(date +%H:%M:%s:%n | sha256sum | base64) ; echo "$Key10" >> ~/keytest/key
 Key11=$(date +%H:%M:%s:%m | sha256sum | base64) ; echo "$Key11" >> ~/keytest/keytest.txt
 fi
 }
-
 }
 #MD5 independently hashed output
 #Choose one, copy/paste into web auth, then add at least one character to string.
@@ -108,7 +107,6 @@ echo
         echo "$J" | sha256sum | cut -c 1-10 | awk '{print $0".-."}'
         echo
 }
-
 # Remove last line of ~/.bash_history
 tail -q -n 1 ~/.bash_history | wc -c | xargs -I {} truncate ~/.bash_history -s -{}
 { sleep 10
