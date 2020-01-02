@@ -68,8 +68,6 @@ echo
 }
 
 # Remove last line of ~/.bash_history
-{ tail -q -n 1 ~/.bash_history | wc -c | xargs -I {} truncate ~/.bash_history -s -{}
-}
 { sleep 10
 }
 { echo secure exit
