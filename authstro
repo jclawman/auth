@@ -8,30 +8,74 @@
 { 
 	echo secure input
         read -s securekey
-        echo
-        echo 
 }
  {
   {
   		if [ ! -s ~/keys ]; then
 		mkdir -p ~/keys
 	fi
-	}
-{
+}
+    {
 		if [ ! -s ~/keys/keys.txt ]; then
+                echo secure key hash input
+                read -s secureKeyHashInput
 #Generate Personal Random keys to be added before hash of actual keys
-		Key1=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key1" >> ~/keys/keys.txt
-		Key2=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key2" >> ~/keys/keys.txt
-		Key3=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key3" >> ~/keys/keys.txt
-		Key4=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key4" >> ~/keys/keys.txt
-		Key5=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key5" >> ~/keys/keys.txt
-		Key6=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key6" >> ~/keys/keys.txt
-		Key7=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key7" >> ~/keys/keys.txt
-		Key8=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key8" >> ~/keys/keys.txt
-		Key9=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key9" >> ~/keys/keys.txt
-		Key10=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key10" >> ~/keys/keys.txt
-		Key11=$(securekey + date +"%H-%M" | base64 ) ; echo "$Key11" >> ~/keys/keys.txt
-		fi
+		Key1a="$secureKeyHashInput"
+            Key1b="$(date +"%H-%M-%U-%u-%Z")"
+            Key1="$Key1a""$Key1b"
+            echo "$Key1" | base64 >> ~/keys/keys.txt
+
+        Key2a="$secureKeyHashInput"
+            Key2b="$(date +"%H-%M-%y")"
+            Key2="$Key2a""$Key2b"
+            echo "$Key2" | base64 >> ~/keys/keys.txt
+
+        Key3a="$secureKeyHashInput"
+            Key3b="$(date +"%H-%M-%l")"
+            Key3="$Key3a""$Key3b"
+            echo "$Key3" | base64 >> ~/keys/keys.txt
+
+        Key4a="$secureKeyHashInput"
+            Key4b="$(date +"%H-%M-%y")"
+            Key4="$Key4a""$Key4b"
+            echo "$Key4" | base64 >> ~/keys/keys.txt
+
+        Key5a="$secureKeyHashInput"
+            Key5b="$(date +"%H-%M-%j-%G")"
+            Key5="$Key5a""$Key5b"
+            echo "$Key5" | base64 >> ~/keys/keys.txt
+
+        Key6a="$secureKeyHashInput"
+            Key6b="$(date +"%M-%Y-%H")"
+            Key6="$Key6a""$Key6b"
+            echo "$Key6" | base64 >> ~/keys/keys.txt
+
+        Key7a="$secureKeyHashInput"
+            Key7b="$(date +"%H-%M-%B")"
+            Key7="$Key7a""$Key7"
+            echo "$Key7" | base64 >> ~/keys/keys.txt
+
+        Key8a="$secureKeyHashInput"
+            Key8b="$(date +"%H--%Z-%M-%G")"
+            Key8="$Key8a""$Key8b"
+            echo "$Key8" | base64 >> ~/keys/keys.txt
+
+        Key9a="$secureKeyHashInput"
+            Key9b="$(date +"%H-%M-%j")"
+            Key9="$Key9a""$Key9b"
+            echo "$Key9" | base64 >> ~/keys/keys.txt
+
+        Key10a="$secureKeyHashInput"
+            Key10b="$(date +"%M-%H-%u")"
+            Key10="$Key7a""$Key7"
+            echo "$Key7" | base64 >> ~/keys/keys.txt
+
+        Key11a="$secureKeyHashInput"
+            Key11b="$(date +"%H-%M-%Z")"
+            Key11="$Key11a""$Key11b"
+            echo "$Key11" | base64 >> ~/keys/keys.txt
+    fi
+
 	}
  }
 #base64 independently hashed output
@@ -45,7 +89,7 @@ echo
                 A2="$(sed '1q;d' ~/keys/keys.txt)"
                 A3="$(sed '2q;d' ~/keys/keys.txt)"
         A+="$A2""$A3"
-        echo "$A" | base64 | cut -c 1-28 | awk '{print $0".!."}'
+        echo "$A" | openssl sha256 | cut -c 1-28 | awk '{print $0".!."}'
         echo
 	}
 
@@ -54,7 +98,7 @@ echo
                 B2="$(sed '3q;d' ~/keys/keys.txt)"
                 B3="$(sed '4q;d' ~/keys/keys.txt)"
         B+="$B2""$B3"
-        echo "$B" | base64 | cut -c 1-28 | awk '{print $0".@."}'
+        echo "$B" | openssl sha256 | cut -c 1-28 | awk '{print $0".@."}'
         echo
 	}
 
@@ -63,7 +107,7 @@ echo
                 C2="$(sed '5q;d' ~/keys/keys.txt)"
                 C3="$(sed '6q;d' ~/keys/keys.txt)"
         C+="$C2""$C3"
-        echo "$C" | base64 | cut -c 1-28 | awk '{print $0".-."}'
+        echo "$C" | openssl sha256 | cut -c 1-28 | awk '{print $0".-."}'
         echo
 	}
 
@@ -72,7 +116,7 @@ echo
                 D2="$(sed '7q;d' ~/keys/keys.txt)"
                 D3="$(sed '8q;d' ~/keys/keys.txt)"
         D+="$D2""$D3"
-        echo "$D" | base64 | cut -c 1-28 | awk '{print $0".=."}'
+        echo "$D" | openssl sha256 | cut -c 1-28 | awk '{print $0".=."}'
         echo
 	}
 
@@ -81,7 +125,7 @@ echo
                 E2="$(sed '9q;d' ~/keys/keys.txt)"
                 E3="$(sed '10q;d' ~/keys/keys.txt)"
         E+="$E2""$E3"
-        echo "$E" | base64 | cut -c 1-28 | awk '{print $0".!."}'
+        echo "$E" | openssl sha256 | cut -c 1-28 | awk '{print $0".!."}'
         echo
 	}
 
@@ -90,7 +134,7 @@ echo
                 F2="$(sed '11q;d' ~/keys/keys.txt)"
                 F3="$(sed '12q;d' ~/keys/keys.txt)"
         F+="$F2""$F3"
-        echo "$F" | base64 | cut -c 1-12 | awk '{print $0".-."}'
+        echo "$F" | openssl sha256 | cut -c 1-12 | awk '{print $0".-."}'
         echo
 	}
 { 
@@ -98,7 +142,7 @@ echo
                 G2="$(sed '13q;d' ~/keys/keys.txt)"
                 G3="$(sed '14q;d' ~/keys/keys.txt)"
         G+="$G2""$G3"
-        echo "$G" | base64 | cut -c 1-12 | awk '{print $0".&."}'
+        echo "$G" | openssl sha256 | cut -c 1-12 | awk '{print $0".&."}'
         echo
 	}
 { 
@@ -106,7 +150,7 @@ echo
                 H2="$(sed '15q;d' ~/keys/keys.txt)"
                 H3="$(sed '16q;d' ~/keys/keys.txt)"
         H+="$H2""$H3"
-        echo "$H" | base64 | cut -c 1-12 | awk '{print $0".^."}'
+        echo "$H" | openssl sha256 | cut -c 1-12 | awk '{print $0".^."}'
         echo
 	}
 
@@ -115,7 +159,7 @@ echo
                 I2="$(sed '17q;d' ~/keys/keys.txt)"
                 I3="$(sed '18q;d' ~/keys/keys.txt)"
         I+="$I2""$I3"
-        echo "$I" | base64 | cut -c 1-12 | awk '{print $0".-."}'
+        echo "$I" | md5 | cut -c 1-12 | awk '{print $0".-."}'
         echo
 	}
 
@@ -124,7 +168,7 @@ echo
                 J2="$(sed '19q;d' ~/keys/keys.txt)"
                 J3="$(sed '20q;d' ~/keys/keys.txt)"
         J+="$J2""$J3"
-        echo "$J" | base64 | cut -c 1-12 | awk '{print $0"="}'
+        echo "$J" | md5 | cut -c 1-12 | awk '{print $0"="}'
         echo
 	}	
 
