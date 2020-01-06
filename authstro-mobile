@@ -45,7 +45,7 @@ echo
                 A2="$(sed '1q;d' ~/keys/keys.txt)"
                 A3="$(sed '2q;d' ~/keys/keys.txt)"
         A+="$A2""$A3"
-        echo "$A" | base64 | cut -c 1-28 | awk '{print $0".!."}'
+        echo "$A" | base64 | cut -c 1-28 | awk '{print $0"-!."}'
         echo
 	}
 
@@ -54,7 +54,7 @@ echo
                 B2="$(sed '3q;d' ~/keys/keys.txt)"
                 B3="$(sed '4q;d' ~/keys/keys.txt)"
         B+="$B2""$B3"
-        echo "$B" | base64 | cut -c 1-28 | awk '{print $0".@."}'
+        echo "$B" | base64 | cut -c 1-28 | awk '{print $0".@-"}'
         echo
 	}
 
@@ -63,7 +63,7 @@ echo
                 C2="$(sed '5q;d' ~/keys/keys.txt)"
                 C3="$(sed '6q;d' ~/keys/keys.txt)"
         C+="$C2""$C3"
-        echo "$C" | base64 | cut -c 1-28 | awk '{print $0".-."}'
+        echo "$C" | base64 | cut -c 1-28 | awk '{print $0"$-."}'
         echo
 	}
 
@@ -72,7 +72,7 @@ echo
                 D2="$(sed '7q;d' ~/keys/keys.txt)"
                 D3="$(sed '8q;d' ~/keys/keys.txt)"
         D+="$D2""$D3"
-        echo "$D" | base64 | cut -c 1-28 | awk '{print $0".=."}'
+        echo "$D" | base64 | cut -c 1-28 | awk '{print $0".=$"}'
         echo
 	}
 
@@ -81,7 +81,7 @@ echo
                 E2="$(sed '9q;d' ~/keys/keys.txt)"
                 E3="$(sed '10q;d' ~/keys/keys.txt)"
         E+="$E2""$E3"
-        echo "$E" | base64 | cut -c 1-28 | awk '{print $0".!."}'
+        echo "$E" | base64 | cut -c 1-28 | awk '{print $0"@!."}'
         echo
 	}
 
@@ -90,7 +90,7 @@ echo
                 F2="$(sed '11q;d' ~/keys/keys.txt)"
                 F3="$(sed '12q;d' ~/keys/keys.txt)"
         F+="$F2""$F3"
-        echo "$F" | base64 | cut -c 1-10 | awk '{print $0".-."}'
+        echo "$F" | base64 | cut -c 1-10 | awk '{print $0".->"}'
         echo
 	}
 { 
@@ -98,7 +98,7 @@ echo
                 G2="$(sed '13q;d' ~/keys/keys.txt)"
                 G3="$(sed '14q;d' ~/keys/keys.txt)"
         G+="$G2""$G3"
-        echo "$G" | base64 | cut -c 1-10 | awk '{print $0".&."}'
+        echo "$G" | base64 | cut -c 1-10 | awk '{print $0"(&."}'
         echo
 	}
 { 
@@ -106,7 +106,7 @@ echo
                 H2="$(sed '15q;d' ~/keys/keys.txt)"
                 H3="$(sed '16q;d' ~/keys/keys.txt)"
         H+="$H2""$H3"
-        echo "$H" | base64 | cut -c 1-10 | awk '{print $0".^."}'
+        echo "$H" | base64 | cut -c 1-10 | awk '{print $0".^<"}'
         echo
 	}
 
@@ -115,7 +115,7 @@ echo
                 I2="$(sed '17q;d' ~/keys/keys.txt)"
                 I3="$(sed '18q;d' ~/keys/keys.txt)"
         I+="$I2""$I3"
-        echo "$I" | base64 | cut -c 1-10 | awk '{print $0".-."}'
+        echo "$I" | base64 | cut -c 1-10 | awk '{print $0":-."}'
         echo
 	}
 
