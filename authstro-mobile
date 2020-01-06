@@ -1,0 +1,146 @@
+#!/bin/bash
+
+#Secure input of secret key to be hashed
+#Enter at least 2 characters that you can remember
+#Next time you need to reproduce the password just type in those two characters again
+#Keys are hashed upon first run of the program. 
+
+{ 
+	echo secure input
+        read -s securekey
+        echo
+        echo 
+}
+ {
+  {
+  		if [ ! -s ~/keys ]; then
+		mkdir -p ~/keys
+	fi
+	}
+{
+		if [ ! -s ~/keys/keys.txt ]; then
+#Generate Personal Random keys to be added before hash of actual keys
+		Key1=$(date +%H | md5sumsum | base64) ; echo "$Key1" >> ~/keys/keys.txt
+		Key2=$(date +%H | md5sumsum | base64) ; echo "$Key2" >> ~/keys/keys.txt
+		Key3=$(date +%H | md5sumsum | base64) ; echo "$Key3" >> ~/keys/keys.txt
+		Key4=$(date +%H | md5sumsum | base64) ; echo "$Key4" >> ~/keys/keys.txt
+		Key5=$(date +%H | md5sumsum | base64) ; echo "$Key5" >> ~/keys/keys.txt
+		Key6=$(date +%H | md5sum | base64) ; echo "$Key6" >> ~/keys/keys.txt
+		Key7=$(date +%H | md5sum | base64) ; echo "$Key7" >> ~/keys/keys.txt
+		Key8=$(date +%H | md5sum | base64) ; echo "$Key8" >> ~/keys/keys.txt
+		Key9=$(date +%H | md5sum | base64) ; echo "$Key9" >> ~/keys/keys.txt
+		Key10=$(date +%H | md5sum | base64) ; echo "$Key10" >> ~/keys/keys.txt
+		Key11=$(date +%H | md5sum | base64) ; echo "$Key11" >> ~/keys/keys.txt
+		fi
+	}
+ }
+#md5sum independently hashed output
+#Choose one, copy/paste into web auth, then add at least one character to string.
+#Solves for keystroke monitoring, any sort of VNC, and over-the shoulder watching
+#Strings will automatically disappear, reset the terminal, and delete this command out of ~/.bash_history in 10 seconds
+echo hashed output
+echo
+{ 
+	A="$securekey"
+                A2="$(sed '1q;d' ~/keys/keys.txt)"
+                A3="$(sed '2q;d' ~/keys/keys.txt)"
+        A+="$A2""$A3"
+        echo "$A" | md5sum | cut -c 1-28 | awk '{print $0".!."}'
+        echo
+	}
+
+{ 
+	B="$securekey"
+                B2="$(sed '3q;d' ~/keys/keys.txt)"
+                B3="$(sed '4q;d' ~/keys/keys.txt)"
+        B+="$B2""$B3"
+        echo "$B" | md5sum | cut -c 1-28 | awk '{print $0".@."}'
+        echo
+	}
+
+{ 
+	C="$securekey"
+                C2="$(sed '5q;d' ~/keys/keys.txt)"
+                C3="$(sed '6q;d' ~/keys/keys.txt)"
+        C+="$C2""$C3"
+        echo "$C" | md5sum | cut -c 1-28 | awk '{print $0".-."}'
+        echo
+	}
+
+{ 
+	D="$securekey"
+                D2="$(sed '7q;d' ~/keys/keys.txt)"
+                D3="$(sed '8q;d' ~/keys/keys.txt)"
+        D+="$D2""$D3"
+        echo "$D" | md5sum | cut -c 1-28 | awk '{print $0".=."}'
+        echo
+	}
+
+{ 
+	E="$securekey"
+                E2="$(sed '9q;d' ~/keys/keys.txt)"
+                E3="$(sed '10q;d' ~/keys/keys.txt)"
+        E+="$E2""$E3"
+        echo "$E" | md5sum | cut -c 1-28 | awk '{print $0".!."}'
+        echo
+	}
+
+{ 
+	F="$securekey"
+                F2="$(sed '11q;d' ~/keys/keys.txt)"
+                F3="$(sed '12q;d' ~/keys/keys.txt)"
+        F+="$F2""$F3"
+        echo "$F" | md5sum | cut -c 1-10 | awk '{print $0".-."}'
+        echo
+	}
+{ 
+	G="$securekey"
+                G2="$(sed '13q;d' ~/keys/keys.txt)"
+                G3="$(sed '14q;d' ~/keys/keys.txt)"
+        G+="$G2""$G3"
+        echo "$G" | md5sum | cut -c 1-10 | awk '{print $0".&."}'
+        echo
+	}
+{ 
+	H="$securekey"
+                H2="$(sed '15q;d' ~/keys/keys.txt)"
+                H3="$(sed '16q;d' ~/keys/keys.txt)"
+        H+="$H2""$H3"
+        echo "$H" | md5sum | cut -c 1-10 | awk '{print $0".^."}'
+        echo
+	}
+
+{ 
+	I="$securekey"
+                I2="$(sed '17q;d' ~/keys/keys.txt)"
+                I3="$(sed '18q;d' ~/keys/keys.txt)"
+        I+="$I2""$I3"
+        echo "$I" | md5sum | cut -c 1-10 | awk '{print $0".-."}'
+        echo
+	}
+
+{ 
+	J="$securekey"
+                J2="$(sed '19q;d' ~/keys/keys.txt)"
+                J3="$(sed '20q;d' ~/keys/keys.txt)"
+        J+="$J2""$J3"
+        echo "$J" | md5sum | cut -c 1-10 | awk '{print $0"="}'
+        echo
+	}	
+
+# Remove last line of ~/.bash_history
+
+{	
+{ 
+	sleep 10
+	}
+{ 
+	echo secure exit
+	}
+
+{ 
+	sleep 2
+	}
+reset
+exit
+}
