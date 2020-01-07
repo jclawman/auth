@@ -74,6 +74,10 @@
             Key11b="$(date +"%H-%M-%Z")"
             Key11="$Key11a""$Key11b"
             echo "$Key11" | base64 >> ~/keys/keys.txt
+    
+        chmod 500 ~/auth
+        chmod 500 ~/keys
+        chmod 500 ~/keys/keys.txt
     fi
 
 	}
@@ -186,5 +190,11 @@ echo
 	sleep 2
 	}
 reset
+#refresh privacy settings
+    {
+        chmod 500 ~/auth
+        chmod 500 ~/keys
+        chmod 500 ~/keys/keys.txt
+	}
 exit
 }
